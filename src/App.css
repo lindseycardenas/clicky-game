@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-container {
+  height: 50px;
+  flex-grow: 1;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 14pt;
+  font-weight: bolder;
+  background-color: purple;
+}
+
+.tile {
+  border: 5px solid pink;
+  height: 100px; 
+  width: 100px; 
+  background-color: blueviolet; 
+  margin: 10pt; 
+}
+
+.game-board {
+  display: flex; 
+  flex: row wrap; 
+  margin: auto; 
+  justify-content: space-evenly;
+}
