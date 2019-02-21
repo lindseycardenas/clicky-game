@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Tile from "./components/Tile/Tile";
-import Wrapper from "./components/Wrapper"
+import Wrapper from "./components/Wrapper"; 
 import pokemon from "./cards.json";
 
 class App extends Component {
@@ -15,44 +15,47 @@ class App extends Component {
   };
 
   handleTileClick = id => {
-    console.log(`You've clicked ${id}`);
+    console.log(`You've clicked ${pokemon.id}`);
 
     let clickedTiles = this.state.clickedTiles;
+    console.log(clickedTiles);
     //check to see if this has been clicked before!
     if (clickedTiles.includes(id)){
-      this.setState({clickedTiles: [], currentScore: 0, message: "Game Over! Gotta remember 'em all!"}); 
+      this.setState({clickedTiles: [], currentScore: 0, message: "Game Over! Gotta catch 'em all!"}); 
       return
     }else{
       clickedTiles.push(id)
     }
 
     if (clickedTiles.length === 10){
-      this.setState({currentScore:10, status: "You're a world class trainer! You caught 'em all!", clickedTiles: []}); 
+      this.setState({currentScore:10, message: "You're a world class trainer! You caught 'em all!", clickedTiles: []}); 
       return; 
     }
 
-    this.setState({pokemon, clickedTiles, currentScore: clickedTiles.length, status: ""}); 
+    this.setState({pokemon, clickedTiles, currentScore: clickedTiles.length, message: ""}); 
 
     for (let i = pokemon.length -1; i > 0; i--){
       let j = Math.floor(Math.random() * (i + 1)); 
       [pokemon[i], pokemon[j]] = [pokemon[j], pokemon[i]]; 
+
+      this.state.pokemon.forEach(tile => {
+        if (tile.id === id) {
+          if (tile.clicked === true) {
+            console.log("you've clicked the same tile twice");
+          } else {
+            tile.clicked = true;
+            //update the score
+            //if the score is greater than the top score,
+            //update the top score too
+            //don't forget to update your state
+          }
+        }
+      });
+
     }
   }
 
-    // this.state.pokemon.forEach(tile => {
-    //   if (tile.id === id) {
-    //     if (tile.clicked === true) {
-    //       console.log("you've clicked the same tile twice");
-    //     } else {
-    //       tile.clicked = true;
-    //       //update the score
-    //       //if the score is greater than the top score,
-    //       //update the top score too
-    //       //don't forget to update your state
-    //     }
-    //   }
-    // });
-    //if they've clicked the tile before, somehow randomize the tiles
+        //if they've clicked the tile before, somehow randomize the tiles
     //reset the game etc.
 
   render() {

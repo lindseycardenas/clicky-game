@@ -13,14 +13,13 @@
   color: white;
   font-size: 14pt;
   font-weight: bolder;
-  background-color: purple;
+  background-color: palevioletred;
 }
 
 .tile {
   border: 5px solid pink;
   height: 100px; 
   width: 100px; 
-  background-color: blueviolet; 
   margin: 10pt; 
 }
 
